@@ -2,13 +2,13 @@
 
 ## INDEX
 
-Disclaimer
-Install
-Usage
-Configuration Options
-Encryption
-Backup rotation
-Restoring
+* Disclaimer
+* Install
+* Usage
+* Configuration Options
+* Encryption
+* Backup rotation
+* Restoring
 
 
 
