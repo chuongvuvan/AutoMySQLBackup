@@ -49,7 +49,7 @@ To install it manually (the hard way).
 
 Automysqlbackup can be run a number of ways, you can choose which is best for you.
 
- 1. Create a script as below called `runmysqlbackup` using the lines below:
+ 1) Create a script as below called `runmysqlbackup` using the lines below:
 
 ```bash
 #!/bin/sh
@@ -61,9 +61,9 @@ find /var/backup/db* -type f -exec chmod 400 {} \;
 find /var/backup/db* -type d -exec chmod 700 {} \;
 ```
 
- 2. Save it to a suitable location or copy it to your `/etc/cron.daily` folder. 
+ 2) Save it to a suitable location or copy it to your `/etc/cron.daily` folder. 
 
- 3. Make it executable, i.e. chmod +x `/etc/cron.daily/runmysqlbackup`.
+ 3) Make it executable, i.e. chmod +x `/etc/cron.daily/runmysqlbackup`.
 
 
 The backup can be run from the command line simply by running the following command.
@@ -175,7 +175,7 @@ CONFIG_encrypt='no'
 CONFIG_encrypt_password='password0123'
 ```
 
-!! automysqlbackup (the shell program) accepts one parameter, the filename of a configuration file. The entries in there will supersede all others.
+!! `automysqlbackup` (the shell program) accepts one parameter, the filename of a configuration file. The entries in there will supersede all others.
 
 Please take a look at the supplied `automysqlbackup.conf` for information about the configuration options.
 
@@ -192,15 +192,11 @@ openssl enc -aes-256-cbc -d -in encrypted_file_name(ex: *.enc.bz2) -out outputfi
 
 ## BACKUP ROTATION
 
-Daily Backups are rotated weekly.
-
-Weekly Backups are run on fridays, unless otherwise specified via CONFIG_do_weekly.
-
-Weekly Backups are rotated on a 5 week cycle, unless otherwise specified via CONFIG_rotation_weekly.
-
-Monthly Backups are run on the 1st of the month, unless otherwise specified via CONFIG_do_monthly.
-
-Monthly Backups are rotated on a 5 month cycle, unless otherwise specified via CONFIG_rotation_monthly.
+* Daily Backups are rotated weekly.
+* Weekly Backups are run on fridays, unless otherwise specified via `CONFIG_do_weekly`.
+* Weekly Backups are rotated on a 5 week cycle, unless otherwise specified via `CONFIG_rotation_weekly`.
+* Monthly Backups are run on the 1st of the month, unless otherwise specified via `CONFIG_do_monthly`.
+* Monthly Backups are rotated on a 5 month cycle, unless otherwise specified via `CONFIG_rotation_monthly`.
 
 Suggestion: It may be a good idea to copy monthly backups offline or to another server.
 
