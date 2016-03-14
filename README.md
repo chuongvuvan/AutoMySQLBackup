@@ -29,11 +29,13 @@ Extract the package into a directory. If you are reading this you have probably 
 this already.
 
 To install the Automysqlbackup the easy way.
+
 1. Run the install.sh script.
 2. Edit the /etc/automysqlbackup/myserver.conf file to customise your settings.
 3. See usage section.
 
 To install it manually (the hard way).
+
 1. Create the /etc/automysqlbackup directory.
 2. Copy in the automysqlbackup.conf file.
 3. Copy the automysqlbackup file to /usr/local/bin and make executable.
@@ -67,12 +69,16 @@ find /var/backup/db* -type d -exec chmod 700 {} \;
 
 The backup can be run from the command line simply by running the following command.
 
+```
   automysqlbackup /etc/automysqlbackup/myserver.conf
+```
 
 If you don't supply an argument for automysqlbackup, the default configuration
 in the program automysqlbackup will be used unless a global file
 
+```
   CONFIG_configfile="/etc/automysqlbackup/automysqlbackup.conf"
+```
 
 exists.
 
@@ -132,6 +138,7 @@ The global config file which overwrites the default configuration is located her
 Please take a look at the supplied "automysqlbackup.conf" for information about the configuration options.
 
 Default configuration
+```
 CONFIG_configfile="/etc/automysqlbackup/automysqlbackup.conf"
 CONFIG_backup_dir='/var/backup/db'
 CONFIG_do_monthly="01"
@@ -158,6 +165,7 @@ CONFIG_mail_maxattsize=4000
 CONFIG_mail_address='root'
 CONFIG_encrypt='no'
 CONFIG_encrypt_password='password0123'
+```
 
 !! automysqlbackup (the shell program) accepts one parameter, the filename of a configuration file. The entries in there will supersede all others.
 
@@ -169,8 +177,9 @@ Please take a look at the supplied "automysqlbackup.conf" for information about 
 
 To decrypt run (replace bz2 with gz if using gzip):
 
+```
 openssl enc -aes-256-cbc -d -in encrypted_file_name(ex: *.enc.bz2) -out outputfilename.bz2 -pass pass:PASSWORD-USED-TO-ENCRYPT
-
+```
 
 
 ## BACKUP ROTATION
@@ -190,14 +199,18 @@ Suggestion: It may be a good idea to copy monthly backups offline or to another 
 Firstly you will need to uncompress the backup file and decrypt it if encryption was used (see encryption section).
 
 eg.
+```
 gunzip file.gz (or bunzip2 file.bz2)
+```
 
 Next you will need to use the mysql client to restore the DB from the sql file.
 
 eg.
+```
   mysql --user=username --pass=password --host=dbserver database < /path/file.sql
+```
 or
+```
   mysql --user=username --pass=password --host=dbserver -e "source /path/file.sql" database
-
+```
 NOTE: Make sure you use "<" and not ">" in the above command because you are piping the file.sql to mysql and not the other way around.
-
