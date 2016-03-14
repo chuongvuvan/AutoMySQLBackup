@@ -1,4 +1,4 @@
-# AutomysqlBackup
+# AutoMySQLBackup
 
 ## INDEX
 
@@ -221,5 +221,5 @@ or
 ```
   mysql --user=username --pass=password --host=dbserver -e "source /path/file.sql" database
 ```
-NOTE: Make sure you use `<` and not `>` in the above command because you are piping the file.sql to mysql and not the other way around.
+NOTE: Make sure you use `<` and not `>` in the above command because you are piping the `file.sql` to mysql and not the other way around.
 
